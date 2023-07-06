@@ -60,6 +60,7 @@ function renderQuestions() {
     questionsElement.appendChild(questionElement);
 	  onSubmit.addEventListener('click', (score)=>{
 		  document.getElementById("score").innerText = `Your score is ${score} out of 5.`
+		  localStorage.setItem('score', score);
 	  })
   }
 }
