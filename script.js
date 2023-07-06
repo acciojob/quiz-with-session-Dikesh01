@@ -31,6 +31,7 @@ const questions = [
 ];
 
 const questionsElement = document.getElementById("questions");
+const onSubmit = document.getElementById("submit");
 // Display the quiz questions and choices
 function renderQuestions() {
 	
@@ -48,15 +49,18 @@ function renderQuestions() {
       choiceElement.setAttribute("value", choice);
 	
 		const userAnswers = question.answer;
-      if (userAnswers[i] === choice) {
+      if (userAnswers === choice) {
         choiceElement.setAttribute("checked", true);
+		  sessionStorage.setItem('progress',choice);
       }
       const choiceText = document.createTextNode(choice);
       questionElement.appendChild(choiceElement);
       questionElement.appendChild(choiceText);
     }
     questionsElement.appendChild(questionElement);
-	  
+	  onSubmit.addEventListener('click', (score)=>{
+		  document.getElementById("score").innerText = `Your score is ${score} out of 5.`
+	  })
   }
 }
 renderQuestions();
